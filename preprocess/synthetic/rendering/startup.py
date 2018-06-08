@@ -20,10 +20,10 @@ add_path(os.getcwd())
 def params():
     config = {}
     config['basedir'] = os.getcwd()
-    config['shapenetDir'] = '/data1/shubhtuls/cachedir/Datasets/shapeNetCoreV1/'
+    config['shapenetDir'] = '/Users/tianye.li/Downloads/data/ShapeNetCore.v1.partial'
     config['renderPrecomputeDir'] = osp.join(config['basedir'],'..','..','..','cachedir','blenderRenderPreprocess')
     mkdir_p( osp.join(config['basedir'],'..','..','..','cachedir') ) 
     mkdir_p( config['renderPrecomputeDir'] )
     print( 'params(): created dir: %s' % osp.join(config['basedir'],'..','..','..','cachedir') )
-	print( 'params(): created dir: %s' % config['renderPrecomputeDir'] )
+    print( 'params(): created dir: %s' % config['renderPrecomputeDir'] )
     return config
