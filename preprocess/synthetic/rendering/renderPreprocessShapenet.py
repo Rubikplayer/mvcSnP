@@ -64,9 +64,9 @@ class ShapenetRenderer():
         # self.synsets = ['03001627','02691156','02958343']
         self.synsetModels = [[osp.join(self.config['shapenetDir'],s,f,'model.obj') for f in os.listdir(osp.join(self.config['shapenetDir'],s)) if len(f) > 3] for s in self.synsets]
         print( "config:" )
-        print( "config['basedir']  = %s" % ( config['basedir']  ) )
-        print( "config['shapenetDir']  = %s" % ( config['shapenetDir']  ) )
-        print( "config['renderPrecomputeDir']  = %s" % ( config['renderPrecomputeDir']  ) )
+        print( "config['basedir']  = %s" % ( self.config['basedir']  ) )
+        print( "config['shapenetDir']  = %s" % ( self.config['shapenetDir']  ) )
+        print( "config['renderPrecomputeDir']  = %s" % ( self.config['renderPrecomputeDir']  ) )
         print( "synsets:" )
         print self.synsets
         print( "synsetModels: parsed %d models" % ( len( self.synsetModels ) ) )
