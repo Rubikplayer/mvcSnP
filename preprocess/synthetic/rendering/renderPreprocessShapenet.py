@@ -32,12 +32,14 @@ class ShapenetRenderer():
 
     def renderAllSynsets(self):
         for sId,synset in enumerate(self.synsets):
-            print synset
+
+            print( "\nprocessing category %d / %d: %s" % ( sId, len( self.synsets ), synset ) )
             for mId in range(len(self.synsetModels[sId])):
             #for mId in range(10):
-                print mId
                 mName = self._loadNewModel(sId, mId)
-                renderDir = osp.join(self.config['renderPrecomputeDir'] ,synset, mName)
+                print( "processing model %d / %d: %s" % ( mId, len(self.synsetModels[sId]), mName ) )
+
+                renderDir = osp.join(self.config['renderPrecomputeDir'], synset, mName)
                 mkdir_p(renderDir)
                 poseSamples = self._randomPoseSamples()
 
@@ -69,7 +71,7 @@ class ShapenetRenderer():
         print( "config['renderPrecomputeDir']  = %s" % ( self.config['renderPrecomputeDir']  ) )
         print( "synsets:" )
         print self.synsets
-        print( "synsetModels: parsed %d models" % ( len( self.synsetModels ) ) )
+        print( "synsetModels: parsed %d models for category 0" % ( len( self.synsetModels[0] ) ) ) # hardcode 0
 
 
 if __name__ == '__main__':
