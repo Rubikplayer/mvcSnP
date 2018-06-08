@@ -60,6 +60,7 @@ class Renderer:
         viewFout = open(viewFile,'w')
         
         ## render from blender
+        print( "rendering..." )
         for theta in poseSamples:
             eulers = theta.getVar('rot')
             az = eulers[0]
@@ -72,10 +73,11 @@ class Renderer:
         prefix = 'init'
         render_cmd = '%s %s --background --python %s -- %s %s %s %s' % (g_blender_executable_path, g_blank_blend_file_path, g_blender_python_script, self.models[self.modelIndex], viewFile,prefix, outDir)
         render_cmd_debug = '%s %s --python %s -- %s %s %s %s' % (g_blender_executable_path, g_blank_blend_file_path, g_blender_python_script, self.models[self.modelIndex], viewFile,prefix, outDir)
-        #print render_cmd
+        print render_cmd
         os.system(render_cmd)
         
         ## augment normals
+        print( "augmenting normals..." )
         pt = Imath.PixelType(Imath.PixelType.FLOAT)
         viewParams = [[float(x) for x in line.strip().split(' ')] for line in open(viewFile).readlines()]
         
@@ -105,6 +107,7 @@ class Renderer:
             exrimage.close()
             
         ## remove unwanted files
+        print( "removing unwanted files..." )  
         for ix,view in enumerate(viewParams):
             azimuth_deg = view[0]
             elevation_deg = view[1]
